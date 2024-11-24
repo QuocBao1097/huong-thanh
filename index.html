@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <HTML>
  <HEAD>
-  <TITLE> Le Thu Ngan </TITLE>
+  <TITLE> Huong Thanh </TITLE>
   <link rel="icon" type="image/x-icon" href="images/ngan.jpg">
   <META NAME="Generator" CONTENT="EditPlus">
   <META NAME="Author" CONTENT="">
@@ -25,7 +25,7 @@ canvas {
  <BODY>
   <div class="box">
     <canvas id="pinkboard"></canvas>
-    <h1 style="text-align: center; color: aliceblue;" >Le Thu Ngan</h1>
+    <h1 style="text-align: center; color: aliceblue;" >Huong Thanh</h1>
   </div>
 <script>
 var settings = {
@@ -111,7 +111,7 @@ var ParticlePool = (function() {
       firstActive = 0,
       firstFree   = 0,
       duration    = settings.particles.duration;
- 
+
   function ParticlePool(length) {
     // create and populate particle pool
     particles = new Array(length);
@@ -120,7 +120,7 @@ var ParticlePool = (function() {
   }
   ParticlePool.prototype.add = function(x, y, dx, dy) {
     particles[firstFree].initialize(x, y, dx, dy);
-   
+
     // handle circular queue
     firstFree++;
     if (firstFree   == particles.length) firstFree   = 0;
@@ -129,7 +129,7 @@ var ParticlePool = (function() {
   };
   ParticlePool.prototype.update = function(deltaTime) {
     var i;
-   
+
     // update active particles
     if (firstActive < firstFree) {
       for (i = firstActive; i < firstFree; i++)
@@ -141,14 +141,13 @@ var ParticlePool = (function() {
       for (i = 0; i < firstFree; i++)
         particles[i].update(deltaTime);
     }
-   
+
     // remove inactive particles
     while (particles[firstActive].age >= duration && firstActive != firstFree) {
       firstActive++;
       if (firstActive == particles.length) firstActive = 0;
     }
-   
-   
+
   };
   ParticlePool.prototype.draw = function(context, image) {
     // draw active particles
